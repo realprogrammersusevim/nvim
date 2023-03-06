@@ -47,3 +47,67 @@ My handcrafted Neovim configuration written purely in Lua.
 - [nvim-treesitter-refactor](https://github.com/nvim-treesitter/nvim-treesitter-refactor)
 - [trouble.nvim](https://github.com/folke/trouble.nvim)
 - [which-key.nvim](https://github.com/folke/which-key.nvim)
+
+## Layout
+
+The scheme of my Neovim configuration is rather simple once you understand it.
+
+```
+.
+|-- ftplugin
+|   `-- markdown.lua
+|-- init.lua
+|-- lazy-lock.json
+|-- lua
+|   |-- core
+|   |   |-- autocmds.lua
+|   |   |-- init.lua
+|   |   `-- vars.lua
+|   |-- keymaps.lua
+|   `-- plugins
+|       |-- alpha.lua
+|       |-- autopairs.lua
+|       |-- barbar.lua
+|       |-- bullets.lua
+|       |-- cmp.lua
+|       |-- colorscheme.lua
+|       |-- comment.lua
+|       |-- copilot.lua
+|       |-- general.lua
+|       |-- gitsigns.lua
+|       |-- lspconfig.lua
+|       |-- lualine.lua
+|       |-- markdown.lua
+|       |-- noice.lua
+|       |-- null-ls.lua
+|       |-- nvim-tree.lua
+|       |-- telekasten.lua
+|       |-- telescope.lua
+|       |-- todo.lua
+|       |-- treesitter.lua
+|       |-- trouble.lua
+|       `-- which-key
+|           |-- config.lua
+|           |-- init.lua
+|           `-- keymappings.lua
+|-- spell
+|   |-- en.utf-8.add
+|   `-- en.utf-8.add.spl
+`-- utils
+    |-- linter-config
+    `-- thesaurii.txt
+```
+
+The `init.lua` file is the main configuration file. It bootstraps my plugin
+manager lazy.nvim and then loads the other modules. The `core` folder contains
+some basic configuration for Neovim variables. `keymaps.lua` contains keymaps
+for the editor. The plugins folder is the largest and most important since it
+contains all the plugins and configuration for each of them that I use. All of
+my plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim) and
+are grouped in separate files.
+
+The `utils` folder has the configuration files for my Lua linters. I copied them
+from the Neovim repository.
+
+The `ftplugin` folder holds the configuration files for special file types. So
+far, I only have one for Markdown.
