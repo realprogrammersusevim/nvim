@@ -1,0 +1,50 @@
+#!luajit
+
+local toml = require('toml')
+local argparse = require('argparse')
+
+local parser = argparse()({ name = 'dotfiles', description = 'Manage dotfiles' })
+parser:argument('action', 'The action to take.'):choices({ 'pull', 'push' }):default('pull')
+parser:option('-c --config', 'The config file to use.'):default('config.toml')
+parser:flag('-d --delete', 'Sync deletions.')
+parser:flag('-v --verbose', 'Verbose output.')
+local args = parser:parse()
+
+local function log(logee)
+  if args.verbose then
+    print(logee)
+  end
+end
+
+local config_text = io.open(args.config, 'r'):read('a')
+local config = toml.parse(config_text)
+
+local repo_loc = config.dotfiles
+if repo_loc:sub(-1) ~= '/' then
+  repo_loc = repo_loc .. '/'
+end
+
+local function command(name, recursive, source, destination)
+  log(name .. '...')
+  local cmd = 'rsync --no-perms --no-owner --no-group '
+  if recursive then
+    cmd = cmd .. '-r '
+    if args.delete then -- Delete option only works when recursive is enabled
+      cmd = cmd .. '--delete '
+    end
+  end
+  if args.verbose then
+    cmd = cmd .. '-v '
+  end
+  cmd = cmd .. source .. ' ' .. destination
+  log('Running command: ' .. cmd)
+  os.execute(cmd)
+end
+
+if args.action == 'pull' then
+  log('Syncing Neovim config')
+  command('Neovim', true, config.neovim, repo_loc .. 'nvim/')
+elseif args.action == 'push' then
+  log('Syncing Neovim config')
+  command('Neovim', true, repo_loc .. 'nvim/*', config.neovim)
+end

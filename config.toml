@@ -1,0 +1,5 @@
+# Location of NeoVim config
+neovim = "~/.config/nvim/"
+
+# Location of this repository
+dotfiles = "~/Documents/GitHub/nvim/"
