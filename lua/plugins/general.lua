@@ -6,7 +6,7 @@ return {
       vim.fn['firenvim#install'](0)
     end,
   },
-  { 'lukas-reineke/indent-blankline.nvim', event = 'BufRead' },
+  { 'lukas-reineke/indent-blankline.nvim', event = 'BufReadPost' },
   -- { 'skywind3000/asyncrun.nvim', cmd = 'AsyncRun' },
   {
     'ray-x/web-tools.nvim',

@@ -1,6 +1,7 @@
 return {
   'zbirenbaum/copilot.lua', -- Lua replacement for Copilot
   event = 'InsertEnter',
+  lazy = true,
   config = function()
     require('copilot').setup({
       panel = {

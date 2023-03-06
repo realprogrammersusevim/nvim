@@ -4,7 +4,6 @@ return {
   dependencies = {
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-path' },
-    { 'hrsh7th/cmp-nvim-lua' },
     { 'hrsh7th/cmp-calc' },
     { 'hrsh7th/cmp-emoji' },
     {
@@ -20,14 +19,10 @@ return {
     { 'hrsh7th/cmp-cmdline' },
     { 'onsails/lspkind.nvim' },
     {
-      'petertriho/cmp-git',
-      dependencies = 'nvim-lua/plenary.nvim',
-      config = function()
-        require('cmp_git').setup()
-      end,
-    },
-    {
       'zbirenbaum/copilot-cmp',
+      dependencies = {
+        'zbirenbaum/copilot.lua',
+      },
       config = function()
         require('copilot_cmp').setup()
       end,
@@ -96,8 +91,6 @@ return {
         { name = 'copilot' },
         { name = 'calc' },
         { name = 'emoji' },
-        -- { name = 'nvim_lua' },
-        { name = 'git' },
       },
       formatting = {
         format = lspkind.cmp_format({
@@ -105,12 +98,10 @@ return {
           menu = {
             nvim_lsp = 'LSP',
             luasnip = 'Snip',
-            nvim_lua = 'Lua',
             path = 'Path',
             copilot = 'Copilot',
             calc = 'Calc',
             emoji = 'Emoji',
-            git = 'Git',
           },
         }),
       },
