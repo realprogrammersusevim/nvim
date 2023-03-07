@@ -1,7 +1,7 @@
 return {
   {
     'jose-elias-alvarez/null-ls.nvim',
-    event = 'BufRead',
+    event = 'BufReadPost',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'neovim/nvim-lspconfig',
@@ -32,9 +32,6 @@ return {
           -- Code actions
           actions.proselint,
           actions.shellcheck,
-
-          -- Completion
-          -- null_ls.builtins.completion.spell.with({ filetypes = { 'markdown' } }),
 
           -- Diagnostics
           diagnostics.shellcheck,

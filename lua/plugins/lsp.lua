@@ -2,6 +2,7 @@ return {
   'folke/neodev.nvim',
   {
     'neovim/nvim-lspconfig',
+    event = 'BufReadPost',
     dependencies = {
       {
         'williamboman/mason.nvim',
@@ -72,7 +73,6 @@ return {
             },
             -- Do not send telemetry data containing a randomized but unique identifier
             telemetry = { enable = false },
-
             semantic = {
               -- Treesitter highlighting is better
               enable = false,

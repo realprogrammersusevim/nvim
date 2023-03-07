@@ -1,6 +1,4 @@
-if vim.g.vim.g.started_by_firenvim then
-  require('plain')
-else
+if not vim.g.started_by_firenvim then
   local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
   if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -19,4 +17,6 @@ else
   require('keymaps')
 
   require('lazy').setup('plugins')
+else
+  require('plain')
 end

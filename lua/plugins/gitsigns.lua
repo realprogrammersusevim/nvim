@@ -1,7 +1,13 @@
 return {
-  'lewis6991/gitsigns.nvim', -- Git signs in the gutter
-  event = 'BufRead',
-  config = function()
-    require('gitsigns').setup()
-  end,
+  {
+    'lewis6991/gitsigns.nvim', -- Git signs in the gutter
+    -- cond = function()
+    --   if vim.fn.system('git rev-parse --is-inside-work-tree 2>/dev/null') == 'true' then
+    --     return true
+    --   else
+    --     return false
+    --   end
+    -- end,
+    config = true,
+  },
 }

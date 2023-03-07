@@ -43,8 +43,8 @@ end
 
 if args.action == 'pull' then
   log('Syncing Neovim config')
-  command('Neovim', true, config.neovim, repo_loc .. 'nvim/')
+  command('Neovim', true, config.neovim, repo_loc)
 elseif args.action == 'push' then
   log('Syncing Neovim config')
-  command('Neovim', true, repo_loc .. 'nvim/*', config.neovim)
+  command('Neovim', true, repo_loc, config.neovim)
 end
