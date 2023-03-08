@@ -2,6 +2,7 @@ return {
   {
     'renerocksai/telekasten.nvim',
     ft = 'markdown',
+    lazy = true,
     config = function()
       local home =
         vim.fn.expand('~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Zettelkasten/')

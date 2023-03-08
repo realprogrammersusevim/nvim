@@ -4,7 +4,17 @@ require('which-key').register({
   w = { name = 'Save', { '<CMD>w!<CR>', 'Save' } },
   Q = { name = 'Quit', { '<CMD>q<CR>', '[Q]uit' } }, -- Uppercase makes it harder to bump next to w
   h = { name = 'No [h]ighlight', { '<CMD>nohl<CR>', 'No [h]ighlight' } },
-  p = { name = 'Lazy [p]lugins', { '<CMD>Lazy<CR>', 'Lazy [p]lugins' } },
+  p = {
+    name = 'Lazy [p]lugins',
+    h = { '<CMD>Lazy home<CR>', 'Lazy [h]ome' },
+    s = {
+      function()
+        local stats = require('lazy').stats()
+        print('Loaded ' .. stats.loaded .. ' plugins in ' .. stats.startuptime .. ' milleseconds.')
+      end,
+      'Lazy [s]tats',
+    },
+  },
   s = {
     name = 'Search',
     s = { '<CMD>Telescope<CR>', 'Search' },

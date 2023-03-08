@@ -17,6 +17,8 @@ if not vim.g.started_by_firenvim then
   require('keymaps')
 
   require('lazy').setup('plugins')
+
+  require('commands')
 else
   require('plain')
 end

@@ -1,7 +1,7 @@
 return {
   {
     'romgrk/barbar.nvim',
-    lazy = false,
+    -- lazy = false,
     dependencies = { 'kyazdani42/nvim-web-devicons' },
     opts = {
       -- Enable/disable animations

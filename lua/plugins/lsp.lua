@@ -1,8 +1,7 @@
 return {
-  'folke/neodev.nvim',
   {
     'neovim/nvim-lspconfig',
-    event = 'BufReadPost',
+    event = 'BufReadPre',
     dependencies = {
       {
         'williamboman/mason.nvim',
@@ -11,6 +10,7 @@ return {
         end,
       },
       'williamboman/mason-lspconfig.nvim',
+      'folke/neodev.nvim',
     },
     config = function()
       require('mason').setup()
